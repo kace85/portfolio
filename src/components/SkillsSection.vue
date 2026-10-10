@@ -1,12 +1,12 @@
 <template>
   <section class="skills-section">
     <div class="section-wrap skills-content">
-      <div>
+      <div v-reveal>
         <p class="section-label">{{ lang === 'en' ? 'How I build' : 'Teknologi yang digunakan' }}</p>
         <h2 class="section-heading">{{ lang === 'en' ? 'Tools & Skills' : 'Teknologi & Keahlian' }}</h2>
       </div>
       <ul class="skill-list" :aria-label="lang === 'en' ? 'Technologies' : 'Teknologi'">
-        <li v-for="skill in skills" :key="skill">{{ skill }}</li>
+        <li v-for="(skill, index) in skills" :key="skill" v-reveal="Math.min(index, 4) * 80">{{ skill }}</li>
       </ul>
     </div>
   </section>
@@ -54,6 +54,14 @@ const skills = ['HTML', 'CSS', 'JavaScript', 'Vue.js', 'Vite', 'CodeIgniter', 'G
   color: #424940;
   font-size: 0.88rem;
   font-weight: 550;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.skill-list li:hover {
+  transform: translateY(-2px);
+  border-color: #bdc9bc;
+  background: #fff;
+  color: var(--color-accent);
 }
 
 @media (max-width: 700px) {

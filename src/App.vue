@@ -174,6 +174,11 @@ img {
   font-size: 1.35rem;
   font-weight: 750;
   letter-spacing: -0.07em;
+  transition: color 180ms ease;
+}
+
+.wordmark:hover {
+  color: var(--color-accent);
 }
 
 .wordmark span {
@@ -191,7 +196,7 @@ img {
   color: #50554f;
   font-size: 0.9rem;
   font-weight: 550;
-  transition: color 160ms ease;
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
 }
 
 .navigation-links a:hover {
@@ -203,11 +208,13 @@ img {
   border-radius: 999px;
   background: var(--color-accent);
   color: #fff;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .navigation-links .navigation-cta:hover {
   background: var(--color-accent-dark);
   color: #fff;
+  transform: translateY(-1px);
 }
 
 .language-switch {
@@ -226,6 +233,11 @@ img {
   font-size: inherit;
   font-weight: 600;
   cursor: pointer;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.language-switch button:hover {
+  transform: translateY(-1px);
 }
 
 .language-switch button[aria-pressed="true"] {
@@ -235,6 +247,12 @@ img {
 
 .menu-toggle {
   display: none;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.menu-toggle:hover {
+  border-color: #bdc9bc;
+  background: #f1f3ef;
 }
 
 .section-wrap {
@@ -274,6 +292,13 @@ img {
   transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
+.navigation-links a:active,
+.language-switch button:active,
+.menu-toggle:active,
+.button:active {
+  transform: translateY(0);
+}
+
 .button:hover {
   transform: translateY(-2px);
 }
@@ -305,6 +330,23 @@ img {
 
 .button-disabled:hover {
   transform: none;
+}
+
+.reveal-element {
+  transition:
+    opacity 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 @media (max-width: 700px) {
@@ -379,6 +421,24 @@ img {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .reveal-pending,
+  .reveal-visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .navigation-links a:hover,
+  .language-switch button:hover,
+  .button:hover,
+  .featured-project:hover,
+  .featured-project:focus-within,
+  .featured-project:hover .project-preview img,
+  .featured-project:focus-within .project-preview img,
+  .skill-list li:hover,
+  .footer-content > a:last-child:hover {
+    transform: none !important;
   }
 }
 </style>

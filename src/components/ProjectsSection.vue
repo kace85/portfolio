@@ -2,11 +2,11 @@
   <section id="work" class="work-section">
     <div class="section-wrap">
       <div class="work-heading">
-        <div>
+        <div v-reveal>
           <p class="section-label">{{ lang === 'en' ? 'Selected project' : 'Project pilihan' }}</p>
           <h2 class="section-heading">{{ lang === 'en' ? 'Featured Work' : 'Karya Unggulan' }}</h2>
         </div>
-        <p class="work-intro">
+        <p v-reveal class="work-intro">
           {{ lang === 'en'
             ? 'Live websites built to help real businesses show their services online.'
             : 'Website live yang membantu bisnis menampilkan layanan mereka secara online.' }}
@@ -18,6 +18,7 @@
           v-for="(project, index) in portfolioConfig.liveProjects"
           :id="index === 0 ? 'featured' : undefined"
           :key="project.name"
+          v-reveal="index * 90"
           class="featured-project"
         >
           <div class="project-preview featured-preview">
@@ -99,6 +100,14 @@ defineProps({
   border: 1px solid #e1e5de;
   border-radius: 8px;
   background: #fff;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.featured-project:hover,
+.featured-project:focus-within {
+  transform: translateY(-4px);
+  border-color: #cbd5ca;
+  box-shadow: 0 14px 32px rgb(32 35 31 / 9%);
 }
 
 .project-preview {
@@ -114,8 +123,9 @@ defineProps({
   transition: transform 300ms ease;
 }
 
-.featured-project:hover .project-preview img {
-  transform: scale(1.015);
+.featured-project:hover .project-preview img,
+.featured-project:focus-within .project-preview img {
+  transform: scale(1.03);
 }
 
 .featured-preview {

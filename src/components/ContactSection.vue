@@ -1,19 +1,20 @@
 <template>
   <section id="contact" class="contact-section">
     <div class="section-wrap contact-content">
-      <p class="section-label">{{ lang === 'en' ? 'Start a conversation' : 'Mulai percakapan' }}</p>
-      <h2>{{ lang === 'en' ? 'Have a website in mind?' : 'Punya ide website?' }}<br>{{ lang === 'en' ? 'Let’s talk.' : 'Mari ngobrol.' }}</h2>
-      <p class="contact-description">
+      <p v-reveal class="section-label">{{ lang === 'en' ? 'Start a conversation' : 'Mulai percakapan' }}</p>
+      <h2 v-reveal="90">{{ lang === 'en' ? 'Have a website in mind?' : 'Punya ide website?' }}<br>{{ lang === 'en' ? 'Let’s talk.' : 'Mari ngobrol.' }}</h2>
+      <p v-reveal="180" class="contact-description">
         {{ lang === 'en'
           ? 'Have a business or project that needs a website? Let’s talk.'
           : 'Punya bisnis atau project yang membutuhkan website? Mari ngobrol.' }}
       </p>
       <a
         v-if="whatsappUrl"
+        v-reveal="270"
         class="button button-primary contact-button"
         :href="whatsappUrl"
       >{{ lang === 'en' ? 'Chat on WhatsApp' : 'Chat via WhatsApp' }} <span aria-hidden="true">→</span></a>
-      <button v-else class="button button-primary button-disabled contact-button" type="button" disabled>
+      <button v-else v-reveal="270" class="button button-primary button-disabled contact-button" type="button" disabled>
         {{ lang === 'en' ? 'Chat on WhatsApp' : 'Chat via WhatsApp' }} <span aria-hidden="true">→</span>
       </button>
     </div>

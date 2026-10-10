@@ -1,6 +1,6 @@
 <template>
   <footer class="site-footer">
-    <div class="section-wrap footer-content">
+    <div v-reveal class="section-wrap footer-content">
       <a class="wordmark" href="#home">Krisna Candra<span>.</span></a>
       <p>© {{ year }} Krisna Candra. {{ lang === 'en' ? 'Built with care.' : 'Dibuat dengan sepenuh hati.' }}</p>
       <a href="#home">{{ lang === 'en' ? 'Back to top' : 'Kembali ke atas' }} ↑</a>
@@ -37,6 +37,11 @@ const year = new Date().getFullYear()
   font-size: 1.15rem;
   font-weight: 750;
   letter-spacing: -0.07em;
+  transition: color 180ms ease;
+}
+
+.wordmark:hover {
+  color: var(--color-accent);
 }
 
 .wordmark span {
@@ -53,6 +58,11 @@ const year = new Date().getFullYear()
 
 .footer-content > a:last-child:hover {
   color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.footer-content > a:last-child {
+  transition: color 180ms ease, transform 180ms ease;
 }
 
 @media (max-width: 520px) {

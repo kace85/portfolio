@@ -1,12 +1,12 @@
 <template>
   <section id="about" class="about-section">
     <div class="section-wrap about-content">
-      <div>
+      <div v-reveal>
         <p class="section-label">{{ lang === 'en' ? 'A little about me' : 'Tentang saya' }}</p>
         <h2 class="section-heading">{{ lang === 'en' ? 'About Me' : 'Tentang Saya' }}</h2>
       </div>
-      <img class="about-photo" :src="profileImage" :alt="lang === 'en' ? 'Formal portrait of Krisna' : 'Foto formal Krisna'" loading="lazy">
-      <div class="about-copy">
+      <img v-reveal class="about-photo" :src="profileImage" :alt="lang === 'en' ? 'Formal portrait of Krisna' : 'Foto formal Krisna'" loading="lazy">
+      <div v-reveal class="about-copy">
         <h3>{{ lang === 'en'
           ? 'I’m Krisna, a web developer focused on creating clean, responsive, modern, and easy-to-use websites.'
           : 'Saya Krisna, web developer yang berfokus membuat website yang bersih, responsif, modern, dan mudah digunakan.' }}</h3>
